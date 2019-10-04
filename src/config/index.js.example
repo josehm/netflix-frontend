@@ -1,0 +1,13 @@
+const NODE_ENV = process.env.NODE_ENV || "dev";
+const ENVS = {
+  development: {
+    HTTP_HOST : "http://localhost:4000/graphql"
+  },
+  test:{
+    HTTP_HOST : "http://localhost:4000/graphql"
+  },
+  production:{
+    HTTP_HOST : process.env.HTTP_HOST
+  }
+};
+module.exports = ENVS[NODE_ENV];
