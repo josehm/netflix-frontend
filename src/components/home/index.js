@@ -17,9 +17,6 @@ class Media extends React.Component {
           <h3>Popular en netfrlix </h3>
           <Medias />
           <br/>
-          <h3>Popular en netfrlix </h3>
-          <Medias />
-          <br/>
         </div>
       </section>
     );

@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
 
-import Slider from "react-slick";
-
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import { Link } from "react-router-dom"
+import Slider from "react-slick"
 import Player from '../player'
-import { Link } from "react-router-dom";
 
 const MEDIA_QUERY = gql`
 query{
-  getMedias{
-    _id,
-    title,
-    description,
-    mediaLink
+  getContents{
+    _id
+    title
+    description
+    imgHero
+    overViewLink
   }
 }
 `;
@@ -39,16 +39,14 @@ const Medias = () => (
           <div>
             <Slider {...settings}>
             {
-              data.getMedias.map((media, index) => (
-                <div key={media._id} style={{padding:'5px !important'}} id={media._id}>
+              data.getContents.map((content, index) => (
+                <div key={content._id} style={{padding:'5px !important'}} id={content._id}>
                   <div style={{padding:5}}>
-                    <h5>{media.title}</h5>
                     {
-                      (media.mediaLink)? 
+                      (content.imgHero)? 
                       <div>
-                        <Link to={'/watch/'+media._id}>
-                          <Player url={media.mediaLink} index={ index } />
-                        </Link>
+                        {/*<Link to={'/watch/'+content._id}></Link>*/}
+                        <img src={content.imgHero} alt={content.title} style={{width: '100%'}} />
                       </div>
                       : <p> {'No hay media :('} </p>
                     }

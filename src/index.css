@@ -11,3 +11,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.video-progress-bar {
+    -webkit-appearance: none;
+    width: 95%;
+    height: 4px;
+    border-radius: 2px;  
+    
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+    position: absolute;
+    z-index: 10;
+    background: transparent;
+}
+
+.video-progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #f00000;
+    cursor: pointer;
+}
+
+.video-progress-bar::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #f00000;
+    cursor: pointer;
+}
+
+.video-played-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    z-index: 9;
+    height: 4px;
+}
+.video-played-bar:hover {
+    height: 7px;
+}
+.video-played-bar::-moz-progress-bar { background: transparent; }
+.video-played-bar::-webkit-progress-bar { background: transparent; }
+.video-played-bar::-webkit-progress-value { background-color: #f00000 !important; }
+
+.video-load-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    z-index: 8;
+    height: 4px;
+}
+.video-load-bar:hover {
+    height: 7px;
+}
+.video-load-bar::-moz-progress-bar { background: #5f5454; }
+.video-load-bar::-webkit-progress-bar { background: #5f5454; }
+.video-load-bar::-webkit-progress-value { background: #8e8d8d; }
