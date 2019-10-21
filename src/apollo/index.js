@@ -65,13 +65,16 @@ const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
+        
         graphQLErrors.map(({ message, locations, path, extensions }) => {
           if (extensions.code === 'UNAUTHENTICATED') {
             localStorage.removeItem('jwt');
             client.resetStore()
           }
           console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
-        });
+          return false
+        })
+
         if (networkError) {
           console.log(`[Network error]: ${networkError}`);
         }
